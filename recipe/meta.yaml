@@ -24,7 +24,7 @@ test:
         - if exist %LIBRARY_LIB%\cryptopp-static.lib (exit 0) else (exit 1)                          # [win]
         - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptopp-config.cmake (exit 0) else (exit 1)         # [win]
         - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptopp-config-version.cmake (exit 0) else (exit 1) # [win]
-        - test -f $PREFIX/lib/cryptopp-static.a                                                      # [unix]
+        - test -f $PREFIX/lib/cryptopp.a                                                             # [unix]
         - test -f $PREFIX/share/cmake/cryptopp/cryptopp-config.cmake                                 # [unix]
         - test -f $PREFIX/share/cmake/cryptopp/cryptopp-config-version.cmake                         # [unix]
 about:
