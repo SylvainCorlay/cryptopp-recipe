@@ -25,8 +25,8 @@ test:
         - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptopp-config.cmake (exit 0) else (exit 1)         # [win]
         - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptopp-config-version.cmake (exit 0) else (exit 1) # [win]
         - test -f $PREFIX/lib/libcryptopp.a                                                          # [unix]
-        - test -f $PREFIX/share/cmake/cryptopp/cryptopp-config.cmake                                 # [unix]
-        - test -f $PREFIX/share/cmake/cryptopp/cryptopp-config-version.cmake                         # [unix]
+        - test -f $PREFIX/lib/cmake/cryptopp/cryptopp-config.cmake                                   # [unix]
+        - test -f $PREFIX/lib/cmake/cryptopp/cryptopp-config-version.cmake                           # [unix]
 about:
     home: https://www.cryptopp.com
     license: Boost-1.0
