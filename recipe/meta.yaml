@@ -19,7 +19,6 @@ requirements:
         - vc 14           # [win]
         - gcc-7           # [linux and not armv7l]
     run:
-        - vc 14           # [win]
         - libgcc-7        # [linux and not armv7l]
 test:
     commands:
