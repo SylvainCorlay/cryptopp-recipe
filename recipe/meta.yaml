@@ -22,16 +22,17 @@ build:
     features:
         - cling
         - vc14    # [win and py36]
-    skip: true  # [win and py<35]
+    skip: true  # [win and py<36]
     number: '0'
     string: 'cling_0'
 requirements:
     build:
-        - cling-patches
         - cmake
         - toolchain
+        - cling-patches
         - gcc-7           # [linux and not armv7l]
     run:
+        - vc 14  # [win and py>=35]
         - cling-patches
         - vs2015_runtime >=14.0.25420 # [win]
         - libgcc-7        # [linux and not armv7l]
