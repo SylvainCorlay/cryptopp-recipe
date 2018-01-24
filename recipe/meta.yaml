@@ -19,7 +19,7 @@ source:
 build:
     features:
         - cling
-        - vc14
+        - vc14    # [win]
     skip: true  # [win and py<35]
     number: '0'
     string: 'cling_0'
@@ -32,6 +32,7 @@ requirements:
         - gcc-7           # [linux and not armv7l]
     run:
         - cling-patches
+        - vs2015_runtime  # [win]
         - libgcc-7        # [linux and not armv7l]
 test:
     commands:
