@@ -17,6 +17,8 @@ source:
     - 0001-cmake-mtune-fix.patch  # [not win]
 
 build:
+    noarch: ''
+    noarch_python: false
     features:
         - cling
         - vc14    # [win]
