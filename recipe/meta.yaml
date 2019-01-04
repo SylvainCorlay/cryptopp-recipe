@@ -12,13 +12,11 @@ source:
   sha256: {{ sha256 }}
 
 build:
-    noarch: ''
-    noarch_python: false
     features:
         - cling
         - vc14    # [win and py36]
     skip: true  # [win and py<36]
-    number: '0'
+    number: '1'
     string: 'cling_0'
 requirements:
     build:
@@ -32,13 +30,18 @@ requirements:
         - vs2015_runtime >=14.0.25420 # [win]
         - libgcc-7        # [linux and not armv7l]
 test:
-    commands:
-        - if exist %LIBRARY_LIB%\cryptopp-static.lib (exit 0) else (exit 1)                          # [win]
-        - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptopp-config.cmake (exit 0) else (exit 1)         # [win]
-        - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptopp-config-version.cmake (exit 0) else (exit 1) # [win]
-        - test -f $PREFIX/lib/libcryptopp.a                                                          # [unix]
-        - test -f $PREFIX/lib/cmake/cryptopp/cryptopp-config.cmake                                   # [unix]
-        - test -f $PREFIX/lib/cmake/cryptopp/cryptopp-config-version.cmake                           # [unix]
+  commands:
+    - test -f ${PREFIX}/lib/libcryptopp.a      # [unix]
+    - test -f ${PREFIX}/lib/libcryptopp.so     # [linux]
+    - test -f ${PREFIX}/lib/libcryptopp.dylib  # [osx]
+    - test -d ${PREFIX}/include/cryptopp       # [unix]
+    - test -f ${PREFIX}/lib/cmake/cryptopp/cryptopp-config.cmake          # [unix]
+    - test -f ${PREFIX}/lib/cmake/cryptopp/cryptopp-config-version.cmake  # [unix]
+    - if exist %LIBRARY_LIB%\cryptopp-static.lib (exit 0) else (exit 1)   # [win]
+    - if exist %LIBRARY_BIN%\cryptopp-shared.dll (exit 0) else (exit 1)   # [win]
+    - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptopp-config.cmake (exit 0) else (exit 1)          # [win]
+    - if exist %LIBRARY_LIB%\cmake\cryptopp\cryptopp-config-version.cmake (exit 0) else (exit 1)  # [win]
+
 about:
     home: https://www.cryptopp.com
     license: Boost-1.0
